@@ -8,15 +8,27 @@ import java.util.ArrayList;
 public class SortedArrayList<T extends Comparable<T>> extends ArrayList<T> {
     private boolean noDouble = false;
 
+    /**
+     * Default constructor of the SortedArrayList
+     */
     public SortedArrayList(){
         this(false);
     }
 
+    /**
+     * Constructor of the SortedArrayList
+     * @param _noDouble boolean wether the ArrayList can contain duplicates objects or not
+     */
     public SortedArrayList(boolean _noDouble){
         super();
         noDouble = _noDouble;
     }
 
+    /**
+     * Inserts in order the given Comparable Object in the ArrayList
+     * @param object the object to insert
+     * @return the index of the inserted object
+     */
     public int insertSorted(T object){
         int index;
         for(index = 0 ; index<size(); index++){
@@ -29,8 +41,16 @@ public class SortedArrayList<T extends Comparable<T>> extends ArrayList<T> {
                 return index-1;
             }
         }
-        add(index,object);
+        super.add(index, object);
         return index;
+    }
+    @Override
+    public boolean add(T object){
+        throw new UnsupportedOperationException("add() in a SortedArrayList is deprecated, use insertSorted() instead");
+    }
+    @Override
+    public void add(int i, T object){
+        throw new UnsupportedOperationException("add() in a SortedArrayList is deprecated, use insertSorted() instead");
     }
 
     public static void main(String[] args){

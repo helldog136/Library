@@ -26,10 +26,19 @@ public class DefaultableHashMap<K, V> extends HashMap<K, V> {
         def = _def;
     }
 
+    /**
+     * Allowes to set a different default value for the HashMap
+     * @param _def the V default value to return in case of unassociated K key
+     */
     public void setDefault(V _def){
         def = _def;
     }
 
+    /**
+     *
+     * @param key the key corresponding to the wanted object
+     * @return the V object associated with the K key or the default value.
+     */
     @Override
     public V get(Object key){
         V res = super.get(key);
